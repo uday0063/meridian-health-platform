@@ -1,0 +1,1 @@
+{"name":"meridian-health","version":"1.0.0","private":true,"description":"Centralized healthcare management platform front end","scripts":{"start":"npx serve .","build":"node build.js"}}

@@ -1,0 +1,6 @@
+/* Tiny SVG chart helpers */
+const bars=(d,h=90,c="var(--acc)",lb)=>{const m=Math.max(...d);return`<svg viewBox="0 0 ${d.length*28} ${h}" width="100%" height="${h}" role="img" aria-label="Bar chart">${d.map((v,i)=>`<rect x="${i*28+4}" y="${h-v/m*(h-8)}" width="20" height="${v/m*(h-8)}" rx="5" fill="${c}" data-tip="${lb?lb[i]:"Day "+(i+1)}: ${v}" opacity="${i==d.length-1?1:.55}"/>`).join("")}</svg>`};
+const spark=d=>{const m=Math.max(...d),n=Math.min(...d);return`<svg viewBox="0 0 100 28" width="100%" height="28" preserveAspectRatio="none"><polyline fill="none" stroke="var(--pri)" stroke-width="2" points="${d.map((v,i)=>i*100/(d.length-1)+","+(26-(v-n)/(m-n||1)*24)).join(" ")}"/></svg>`};
+const ring=(p,l)=>`<svg viewBox="0 0 120 120" width="130"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="var(--pri)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${p*3.14}  314" transform="rotate(-90 60 60)"/><text x="60" y="65" text-anchor="middle" font-size="20" font-family="Fraunces,serif" fill="var(--ink)">${l}</text></svg>`;
+const av=n=>`<div class="av">${ini(n)}</div>`,chip=s=>`<span class="chip ${/Pending|Watch/.test(s)?"w":/Flagged|Severe/.test(s)?"b":""}">${s}</span>`;
+const sp=[[4,6,5,8,7,9,10],[10,9,11,8,9,7,8],[5,5,6,7,6,8,9],[2,3,3,4,5,5,6]];
